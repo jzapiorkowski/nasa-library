@@ -19,7 +19,7 @@ export function useGetData() {
         dispatch(StartLoadingAction());
 
         const response = await axios.get(
-          `https://images-api.nasa.gov/search?q=${query}&medasjdnakdnaia_type=image`
+          `https://images-api.nasa.gov/search?q=${query}&media_type=image`
         );
 
         const data = response.data.collection.items;

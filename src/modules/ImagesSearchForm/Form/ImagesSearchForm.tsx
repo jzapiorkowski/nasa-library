@@ -1,11 +1,13 @@
 import { Formik, Form } from 'formik';
-import { FormValues } from '../types';
+import { usePrepareInitialValues } from '../hooks/usePrepareInitialValues';
 import { ImagesSearchFormFields } from './ImagesSearchFormFields';
 
 export function ImagesSearchForm() {
+  const { formInitialValues } = usePrepareInitialValues();
+
   return (
     <Formik
-      initialValues={{ [FormValues.QueryInput]: '' }}
+      initialValues={formInitialValues}
       onSubmit={() => console.log('done')}
     >
       <Form>

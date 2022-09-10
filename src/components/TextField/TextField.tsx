@@ -13,7 +13,7 @@ export function TextField({ name, label, isRequired = false }: TextFieldProps) {
     <Field
       name={name}
       label={label}
-      component={MuiTextField}
+      as={MuiTextField}
       type='text'
       required={isRequired}
     />

@@ -1,5 +1,5 @@
 import { Formik, Form } from 'formik';
-import { usePrepareInitialValues } from '../hooks/usePrepareInitialValues';
+import { usePrepareInitialValues } from '../hooks';
 import { ImagesSearchFormFields } from './ImagesSearchFormFields';
 
 export function ImagesSearchForm() {

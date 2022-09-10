@@ -1,5 +1,5 @@
 import { Field } from 'formik';
-import { useMemo } from 'react';
+import { TextField as MuiTextField } from '@mui/material';
 
 interface TextFieldProps {
   name: string;
@@ -8,21 +8,14 @@ interface TextFieldProps {
   isRequired?: boolean;
 }
 
-export function TextField({
-  name,
-  label,
-  placeholder,
-  isRequired = false,
-}: TextFieldProps) {
-  const fieldLabelText = useMemo(
-    () => `${label}${isRequired ? '*' : ''}`,
-    [label, isRequired]
-  );
-
+export function TextField({ name, label, isRequired = false }: TextFieldProps) {
   return (
-    <>
-      {label && <label>{fieldLabelText}</label>}
-      <Field name={name} label={label} placeholder={placeholder} />
-    </>
+    <Field
+      name={name}
+      label={label}
+      component={MuiTextField}
+      type='text'
+      required={isRequired}
+    />
   );
 }

@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
-import { FormValues } from '../types';
+import { FormValues, FormValuesTypes } from '../types';
 
 export function usePrepareInitialValues() {
   const formInitialValues = useMemo(
-    () => ({
+    (): FormValuesTypes => ({
       [FormValues.QueryInput]: '',
     }),
     []

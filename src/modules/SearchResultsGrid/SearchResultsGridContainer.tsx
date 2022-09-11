@@ -16,7 +16,7 @@ interface StateProps {
   isLoading: boolean;
 }
 
-export function SearchResultsGrid() {
+export function SearchResultsGridContainer() {
   const { data, isLoading } = useSelector<StateType, StateProps>((state) => ({
     data: state.searchResults.data,
     isLoading: state.searchResults.isLoading,

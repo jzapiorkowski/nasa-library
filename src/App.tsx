@@ -1,15 +1,19 @@
+import styled from '@emotion/styled';
 import { PageHeader } from 'modules/PageHeader';
 import { SearchResultsGridContainer } from 'modules/SearchResultsGrid';
-import './App.css';
 import { ImagesSearchForm } from './modules/ImagesSearchForm';
+
+const StyledApp = styled('div')`
+  text-align: center;
+`;
 
 function App() {
   return (
-    <div className='App'>
+    <StyledApp>
       <PageHeader />
       <ImagesSearchForm />
       <SearchResultsGridContainer />
-    </div>
+    </StyledApp>
   );
 }
 

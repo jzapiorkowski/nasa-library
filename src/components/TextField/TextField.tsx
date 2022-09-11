@@ -1,5 +1,6 @@
 import { Field } from 'formik';
 import { TextField as MuiTextField } from '@mui/material';
+import { theme } from 'theme';
 
 interface TextFieldProps {
   name: string;
@@ -16,6 +17,8 @@ export function TextField({ name, label, isRequired = false }: TextFieldProps) {
       as={MuiTextField}
       type='text'
       required={isRequired}
+      focused
+      sx={{ input: { color: theme.palette.primary.main } }}
     />
   );
 }

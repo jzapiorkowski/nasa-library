@@ -1,6 +1,13 @@
+import { Button, styled } from '@mui/material';
 import { Formik, Form } from 'formik';
 import { usePrepareInitialValues, useGetData } from '../hooks';
 import { ImagesSearchFormFields } from './ImagesSearchFormFields';
+
+const StyledForm = styled(Form)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export function ImagesSearchForm() {
   const { formInitialValues } = usePrepareInitialValues();
@@ -8,9 +15,12 @@ export function ImagesSearchForm() {
 
   return (
     <Formik initialValues={formInitialValues} onSubmit={fetchData()}>
-      <Form>
+      <StyledForm>
         <ImagesSearchFormFields />
-      </Form>
+        <Button variant='contained' type='submit'>
+          Search
+        </Button>
+      </StyledForm>
     </Formik>
   );
 }

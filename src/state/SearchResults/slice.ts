@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface SearchResultsTypes {
   isLoading: boolean;
-  data: Array<Record<string, {}>>;
+  data: Array<Record<string, Record<string, any>[]>>;
   isFailed: boolean;
 }
 
@@ -22,7 +22,7 @@ export const SearchResults = createSlice({
     },
     GetFetchResults(
       state: SearchResultsTypes,
-      action: PayloadAction<Array<Record<string, {}>>>
+      action: PayloadAction<Array<Record<string, Record<string, any>[]>>>
     ) {
       state.isLoading = false;
       state.isFailed = false;

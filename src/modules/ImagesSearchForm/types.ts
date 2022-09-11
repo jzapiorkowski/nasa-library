@@ -1,7 +1,7 @@
 export enum FormValues {
-  QueryInput = 'QueryInput',
-  YearStart = 'YearStart',
-  YearEnd = 'YearEnd',
+  QueryInput = 'query_input',
+  YearStart = 'year_start',
+  YearEnd = 'year_end',
 }
 
 export interface FormValuesTypes {

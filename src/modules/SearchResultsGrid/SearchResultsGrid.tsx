@@ -1,68 +1,38 @@
-import { Grid, Paper, Box, styled } from '@mui/material';
-import { Loader } from 'components';
 import { useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import { Grid, Paper, styled } from '@mui/material';
 import { StateType } from 'store';
+import { useSelector } from 'react-redux';
 
-const StyledGridContainer = styled(Grid)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 40px 0;
+const StyledItemContainer = styled(Grid)`
+  width: 400px;
 `;
 
-interface StateProps {
-  data: Record<string, Record<string, any>[]>[];
-  isLoading: boolean;
-}
+const StyledTitle = styled(Paper)`
+  width: 100%;
+  padding: 10px 0;
+`;
+
+const StyledImage = styled('img')`
+  height: 300px;
+  width: 100%;
+`;
 
 export function SearchResultsGrid() {
-  const { data, isLoading } = useSelector<StateType, StateProps>((state) => ({
-    data: state.searchResults.data,
-    isLoading: state.searchResults.isLoading,
-  }));
+  const data = useSelector<StateType, Record<string, Record<string, any>[]>[]>(
+    (state) => state.searchResults.data
+  );
 
   const preparedResultsItems = useMemo(
     () =>
       data.map((element) => {
         return (
-          <Grid item key={element.data[0].nasa_id} sx={{ width: 400 }}>
-            <Paper
-              elevation={6}
-              sx={{
-                width: '100%',
-                paddingTop: 1,
-                paddingBottom: 1,
-              }}
-            >
-              {element.data[0].title}
-            </Paper>
-            <Box
-              component='img'
-              sx={{
-                height: 300,
-                width: '100%',
-              }}
-              alt=''
-              src={element.links[0].href}
-            />
-          </Grid>
+          <StyledItemContainer item key={element.data[0].nasa_id}>
+            <StyledTitle elevation={6}>{element.data[0].title}</StyledTitle>
+            <StyledImage src={element.links[0].href} />
+          </StyledItemContainer>
         );
       }),
     [data]
   );
-
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  return (
-    <StyledGridContainer
-      container
-      rowSpacing={1}
-      columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-    >
-      {preparedResultsItems}
-    </StyledGridContainer>
-  );
+  return <>{preparedResultsItems}</>;
 }

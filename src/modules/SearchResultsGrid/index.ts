@@ -1,1 +1,1 @@
-export * from './SearchResultsGrid';
+export * from './SearchResultsGridContainer';

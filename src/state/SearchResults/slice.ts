@@ -4,12 +4,14 @@ export interface SearchResultsTypes {
   isLoading: boolean;
   data: Array<Record<string, Record<string, any>[]>>;
   isFailed: boolean;
+  wasSearched: boolean;
 }
 
 const initialState: SearchResultsTypes = {
   isLoading: false,
   data: [],
   isFailed: false,
+  wasSearched: false,
 };
 
 export const SearchResults = createSlice({
@@ -19,6 +21,7 @@ export const SearchResults = createSlice({
     StartLoadingAction(state: SearchResultsTypes) {
       state.isLoading = true;
       state.isFailed = false;
+      state.wasSearched = true;
     },
     GetFetchResults(
       state: SearchResultsTypes,

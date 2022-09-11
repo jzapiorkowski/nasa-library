@@ -1,5 +1,6 @@
 import { Grid, styled } from '@mui/material';
-import { Loader } from 'components';
+import { Loader } from 'components/Loader';
+import { FetchFail } from 'components/FetchFail/FetchFail';
 import { useSelector } from 'react-redux';
 import { StateType } from 'store';
 import { SearchResultsGrid } from './SearchResultsGrid';
@@ -13,14 +14,22 @@ const StyledGridContainer = styled(Grid)`
 
 interface StateProps {
   isLoading: boolean;
+  isFailed: boolean;
 }
 
 export function SearchResultsGridContainer() {
-  const { isLoading } = useSelector<StateType, StateProps>((state) => ({
-    isLoading: state.searchResults.isLoading,
-  }));
+  const { isLoading, isFailed } = useSelector<StateType, StateProps>(
+    (state) => ({
+      isLoading: state.searchResults.isLoading,
+      isFailed: state.searchResults.isFailed,
+    })
+  );
 
-  if (isLoading) {
+  if (isFailed && !isLoading) {
+    return <FetchFail />;
+  }
+
+  if (isLoading && !isFailed) {
     return <Loader />;
   }
 

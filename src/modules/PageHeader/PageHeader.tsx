@@ -1,9 +1,13 @@
-import { Typography } from '@mui/material';
+import { Typography, styled } from '@mui/material';
+
+const StyledHeader = styled(Typography)`
+  color: ${({ theme }) => theme.palette.primary.main};
+`;
 
 export function PageHeader() {
   return (
-    <Typography variant='h2'>
+    <StyledHeader variant='h2'>
       The awesome nasa library image searcher
-    </Typography>
+    </StyledHeader>
   );
 }

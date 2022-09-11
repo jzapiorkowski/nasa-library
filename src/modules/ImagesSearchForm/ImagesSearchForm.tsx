@@ -1,6 +1,6 @@
 import { Button, styled } from '@mui/material';
 import { Formik, Form } from 'formik';
-import { usePrepareInitialValues, useGetData } from '../hooks';
+import { usePrepareInitialValues, useGetData } from './hooks';
 import { ImagesSearchFormFields } from './ImagesSearchFormFields';
 
 const StyledForm = styled(Form)`

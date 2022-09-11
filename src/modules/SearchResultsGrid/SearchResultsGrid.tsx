@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Grid, Paper, styled } from '@mui/material';
+import { Grid, Paper, styled, Typography } from '@mui/material';
 import { StateType } from 'store';
 import { useSelector } from 'react-redux';
 
@@ -17,10 +17,16 @@ const StyledImage = styled('img')`
   width: 100%;
 `;
 
+interface StateProps {
+  data: Record<string, Record<string, any>[]>[];
+  wasSearched: boolean;
+}
+
 export function SearchResultsGrid() {
-  const data = useSelector<StateType, Record<string, Record<string, any>[]>[]>(
-    (state) => state.searchResults.data
-  );
+  const { data, wasSearched } = useSelector<StateType, StateProps>((state) => ({
+    data: state.searchResults.data,
+    wasSearched: state.searchResults.wasSearched,
+  }));
 
   const preparedResultsItems = useMemo(
     () =>
@@ -34,5 +40,16 @@ export function SearchResultsGrid() {
       }),
     [data]
   );
+
+  if (!data.length && wasSearched) {
+    return (
+      <>
+        <Typography>
+          Sorry but we could't find what you were looking for
+        </Typography>
+      </>
+    );
+  }
+
   return <>{preparedResultsItems}</>;
 }

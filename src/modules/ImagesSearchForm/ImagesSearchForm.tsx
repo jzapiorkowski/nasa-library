@@ -7,6 +7,11 @@ const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 20px;
+`;
+
+const StyledButton = styled(Button)`
+  margin: 20px;
 `;
 
 export function ImagesSearchForm() {
@@ -17,9 +22,9 @@ export function ImagesSearchForm() {
     <Formik initialValues={formInitialValues} onSubmit={fetchData()}>
       <StyledForm>
         <ImagesSearchFormFields />
-        <Button variant='contained' type='submit'>
+        <StyledButton variant='contained' type='submit'>
           Search
-        </Button>
+        </StyledButton>
       </StyledForm>
     </Formik>
   );

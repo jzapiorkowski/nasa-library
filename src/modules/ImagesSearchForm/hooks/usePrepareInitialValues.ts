@@ -5,6 +5,8 @@ export function usePrepareInitialValues() {
   const formInitialValues = useMemo(
     (): FormValuesTypes => ({
       [FormValues.QueryInput]: '',
+      [FormValues.YearStart]: '',
+      [FormValues.YearEnd]: '',
     }),
     []
   );

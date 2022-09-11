@@ -10,5 +10,8 @@ export const theme = createTheme({
     primary: {
       main: '#ffffff',
     },
+    error: {
+      main: '#ff0000',
+    },
   },
 });

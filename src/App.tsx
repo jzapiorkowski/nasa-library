@@ -1,5 +1,5 @@
 import './App.css';
-import { ImagesSearchForm } from './modules/ImagesSearchForm/Form/ImagesSearchForm';
+import { ImagesSearchForm } from './modules/ImagesSearchForm';
 
 function App() {
   return (

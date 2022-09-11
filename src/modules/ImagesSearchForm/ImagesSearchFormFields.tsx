@@ -1,5 +1,5 @@
 import { TextField } from 'components/TextField/TextField';
-import { FormValues } from '../types';
+import { FormValues } from './types';
 
 export function ImagesSearchFormFields() {
   return (
